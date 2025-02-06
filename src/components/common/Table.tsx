@@ -70,7 +70,7 @@ export default function DataTable<T>({
       className="overflow-x-auto"
       style={{
         boxShadow: boxShadow,
-        borderRadius:borderRadius
+        borderRadius: borderRadius,
       }}
     >
       <Table

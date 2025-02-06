@@ -27,13 +27,16 @@ export default function TablePage() {
   );
 
   return (
-    <Layout>
+    <div>
       <h1 className="text-2xl font-bold mb-4">Users Table</h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <Table columns={columns} data={data || []} />
+        <div className="grid grid-cols-2 gap-4">
+          <Table columns={columns} data={data || []} />
+          <Table columns={columns} data={data || []} selection={true} />
+        </div>
       )}
-    </Layout>
+    </div>
   );
 }

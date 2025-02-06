@@ -1,11 +1,7 @@
-// components/Layout.tsx
 import { ReactNode, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import Header from "../common/Header";
 import Sidebar from "../common/Sidebar";
-
-const drawerWidth = 240;
-
 interface LayoutProps {
   children: ReactNode;
 }

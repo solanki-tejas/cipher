@@ -21,6 +21,7 @@ import { useRouter } from "next/router";
 import { AccountBox, Settings } from "@mui/icons-material";
 import Image from "next/image";
 import CipherLogo from "@/assets/Cipher_Logo.jpg";
+import Face6Icon from "@mui/icons-material/Face6";
 
 // Define the routes and nested items
 const ROUTES = [
@@ -36,6 +37,13 @@ const ROUTES = [
     label: "Table",
     icon: <TableChartIcon />,
     path: "/table",
+    items: [],
+  },
+  {
+    routeName: "customer",
+    label: "Customer",
+    icon: <Face6Icon />,
+    path: "/customer?page=1&take=10",
     items: [],
   },
   {

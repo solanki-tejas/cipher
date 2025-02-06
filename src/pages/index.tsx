@@ -73,30 +73,28 @@ const Dashboard: React.FC = () => {
   );
 
   return (
-    <Layout>
-      <div>
-        <div className="grid grid-cols-6 gap-4 mb-6 overflow-wrap">
-          {stats.map((stat, index) => (
-            <StatCard
-              key={index}
-              icon={stat.icon}
-              title={stat.title}
-              value={stat.value}
-            />
-          ))}
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <RevenueChart />
-          <WeeklyBarChart />
-        </div>
-
-        <div className="grid grid-cols-2 gap-4">
-          <Table columns={columns} data={tableData} selection={true} />
-          <TrafficCard visitors={2579} percentage="+2.45%" />
-        </div>
+    <div>
+      <div className="grid grid-cols-6 gap-4 mb-6 overflow-wrap">
+        {stats.map((stat, index) => (
+          <StatCard
+            key={index}
+            icon={stat.icon}
+            title={stat.title}
+            value={stat.value}
+          />
+        ))}
       </div>
-    </Layout>
+
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <RevenueChart />
+        <WeeklyBarChart />
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <Table columns={columns} data={tableData} selection={true} />
+        <TrafficCard visitors={2579} percentage="+2.45%" />
+      </div>
+    </div>
   );
 };
 
