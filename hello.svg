@@ -1,0 +1,5 @@
+<svg width="250" height="200" viewBox="0 0 250 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="125,20 50,75 50,150 125,180 200,150 200,75" fill="#2f0e07"/>
+  <text x="125" y="125" font-family="Arial" font-size="80" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="white">C</text>
+  <text x="125" y="170" font-family="Arial" font-size="24" text-anchor="middle" fill="#2f0e07">CIPHER</text>
+</svg>
