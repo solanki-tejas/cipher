@@ -6,7 +6,13 @@ import { AppProps } from "next/app";
 import theme from "@/styles/theme";
 import Layout from "@/components/layouts/Layout";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false, // Disable retries globally
+    },
+  },
+});
 // const darkTheme = createTheme({ palette: { mode: "light" } });
 
 export default function MyApp({ Component, pageProps }: AppProps) {

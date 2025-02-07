@@ -7,7 +7,12 @@ import {
   SortingState,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import { borderRadius, boxShadow, secondaryColor } from "@/styles/theme";
+import {
+  borderRadius,
+  boxShadow,
+  primaryColor,
+  secondaryColor,
+} from "@/styles/theme";
 import SortIcon from "@mui/icons-material/Sort";
 import ArrowUpward from "@mui/icons-material/ArrowUpward";
 import ArrowDownward from "@mui/icons-material/ArrowDownward";
@@ -22,12 +27,14 @@ import {
 } from "@mui/material";
 
 interface TableProps<T> {
+  isLoading?: boolean; // Add the selection prop
   columns: ColumnDef<T, any>[];
   data: T[];
   selection?: boolean; // Add the selection prop
 }
 
 export default function DataTable<T>({
+  isLoading,
   columns,
   data,
   selection = false,
@@ -78,7 +85,7 @@ export default function DataTable<T>({
         aria-labelledby="tableTitle"
       >
         {/* Header */}
-        <TableHead style={{ backgroundColor: secondaryColor }}>
+        <TableHead>
           <TableRow>
             {selection && (
               <TableCell padding="checkbox">

@@ -1,164 +1,118 @@
 import { createTheme } from "@mui/material/styles";
 
-// Updated color variables
-// export const primaryColor = "#2f0e07"; // Updated primary color
-// export const secondaryColor = "#414833"; // Updated secondary color
-export const primaryColor = "#242331"; // Updated primary color
-export const secondaryColor = "#2f0e07"; // Updated secondary color
-export const borderRadius = "10px"; // Border radius for rounded corners
-export const fontFamily = "Poppins, sans-serif"; // Font family
-export const backgroundColor = "#f4f7fe"; // Background color
-export const textColor = "#444444"; // Text color
+export const primaryColor = "#242331";
+export const secondaryColor = "#2f0e07";
+export const borderRadius = "10px";
+export const fontFamily = "Poppins, sans-serif";
+export const backgroundColor = "#f4f7fe";
+export const textColor = "#444444";
 export const boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px";
 
 const theme = createTheme({
   palette: {
-    primary: {
-      main: primaryColor, // Using the updated primary color
-    },
-    secondary: {
-      main: secondaryColor, // Using the updated secondary color
-    },
-    background: {
-      default: backgroundColor, // Using background color variable
-    },
-    text: {
-      primary: textColor, // Using text color variable
-    },
+    primary: { main: primaryColor },
+    secondary: { main: secondaryColor },
+    background: { default: backgroundColor },
+    text: { primary: textColor },
   },
   typography: {
-    fontFamily: fontFamily, // Using font family variable
+    fontFamily,
     h1: {
       fontSize: "2.25rem",
       "@media (max-width:600px)": { fontSize: "1.75rem" },
-    }, // Section headings
+    },
     h2: {
       fontSize: "1.875rem",
       "@media (max-width:600px)": { fontSize: "1.5rem" },
-    }, // Large headings
+    },
     h3: {
       fontSize: "1.5rem",
       "@media (max-width:600px)": { fontSize: "1.25rem" },
-    }, // Titles
+    },
     h4: {
       fontSize: "1.25rem",
       "@media (max-width:600px)": { fontSize: "1.125rem" },
-    }, // Subtitles
+    },
     h5: {
       fontSize: "1.125rem",
       "@media (max-width:600px)": { fontSize: "1rem" },
-    }, // Smaller subtitles
+    },
     h6: {
       fontSize: "1rem",
       "@media (max-width:600px)": { fontSize: "0.875rem" },
-    }, // Default text
+    },
     body1: {
       fontSize: "1rem",
       "@media (max-width:600px)": { fontSize: "0.875rem" },
-    }, // Main text
+    },
     body2: {
       fontSize: "0.875rem",
       "@media (max-width:600px)": { fontSize: "0.75rem" },
-    }, // Secondary text
+    },
     caption: {
       fontSize: "0.75rem",
       "@media (max-width:600px)": { fontSize: "0.625rem" },
-    }, // Smallest text
-    button: { fontSize: "0.875rem", textTransform: "none" }, // Button text
+    },
+    button: { fontSize: "0.875rem", textTransform: "none" },
   },
   components: {
     MuiCard: {
       styleOverrides: {
-        root: {
-          borderRadius,
-          boxShadow,
-        },
+        root: { borderRadius, boxShadow },
       },
     },
     MuiButton: {
-      defaultProps: {
-        size: "small",
-        variant: "contained",
-      },
+      defaultProps: { size: "small", variant: "contained" },
       styleOverrides: {
-        root: {
-          borderRadius: borderRadius, // Rounded corners for buttons
-          textTransform: "none", // Avoid uppercasing text in buttons
-          padding: "8px 16px", // Adjust button padding
-        },
+        root: { borderRadius, textTransform: "none", padding: "8px 16px" },
       },
     },
     MuiFormControl: {
       styleOverrides: {
-        root: {
-          width: "100%",
-        },
+        root: { width: "100%" },
       },
     },
     MuiOutlinedInput: {
       styleOverrides: {
-        root: {
-          //   height: "50px",
-        },
+        root: { borderRadius },
       },
     },
     MuiTextField: {
-      defaultProps: {
-        size: "small",
-      },
+      defaultProps: { size: "small" },
       styleOverrides: {
-        root: {
-          borderRadius: borderRadius, // Rounded corners for text fields
-        },
+        root: { borderRadius },
       },
     },
     MuiSelect: {
+      defaultProps: { size: "small" },
       styleOverrides: {
-        root: {
-          borderRadius: borderRadius, // Rounded corners for select input
-        },
+        root: { borderRadius },
       },
     },
     MuiInputBase: {
       styleOverrides: {
-        root: {
-          borderRadius: borderRadius, // Rounded corners for input base
-        },
+        root: { borderRadius },
       },
     },
     MuiCheckbox: {
+      defaultProps: { size: "small" },
       styleOverrides: {
-        root: {
-          borderRadius: borderRadius, // Rounded corners for checkboxes
-        },
+        root: { padding: 0, borderRadius },
       },
     },
     MuiRadio: {
       styleOverrides: {
-        root: {
-          borderRadius: borderRadius, // Rounded corners for radio buttons
-        },
+        root: { borderRadius },
       },
     },
     MuiFormControlLabel: {
       styleOverrides: {
-        root: {
-          marginBottom: "8px", // Adjust spacing for form control labels
-        },
+        root: { marginBottom: "8px" },
       },
     },
-    // MuiTypography: {
-    //   styleOverrides: {
-    //     root: {
-    //       fontSize: "0.875rem", // Default font size
-    //     },
-    //   },
-    // },
     MuiListItemIcon: {
       styleOverrides: {
-        root: {
-          minWidth: "32px",
-        },
+        root: { minWidth: "32px" },
       },
     },
     MuiListItemButton: {
@@ -166,27 +120,25 @@ const theme = createTheme({
         root: {
           paddingTop: "5px",
           paddingBottom: "5px",
-          "&.Mui-selected": {
-            backgroundColor: secondaryColor,
-            color: "white",
-          },
+          "&.Mui-selected": { backgroundColor: secondaryColor, color: "white" },
           "&.Mui-selected:hover": {
             backgroundColor: secondaryColor,
             color: "white",
           },
-          "&.Mui-selected .MuiSvgIcon-root": {
-            color: "white",
-          },
+          "&.Mui-selected .MuiSvgIcon-root": { color: "white" },
         },
       },
     },
-    // MuiListItemText:{
-    //   styleOverrides:{
-    //     primary:{
-    //       fontSize:"0.9rem !important"
-    //     }
-    //   }
-    // }
+    MuiTableHead: {
+      styleOverrides: {
+        root: { backgroundColor: primaryColor },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: { padding: "10px" },
+      },
+    },
   },
 });
 

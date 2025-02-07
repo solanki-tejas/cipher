@@ -5,7 +5,6 @@ import {
   ListItemIcon,
   ListItemText,
   IconButton,
-  Typography,
   Drawer,
   Collapse,
 } from "@mui/material";
@@ -90,7 +89,8 @@ export default function Sidebar({ open, setOpen }: SidebarProps) {
     setOpenSubmenu((prevState) => (prevState === routeName ? null : routeName));
   };
 
-  const isActiveRoute = (route: string) => router.pathname === route;
+  const isActiveRoute = (route: string) =>
+    router.pathname === route.split("?")[0];
 
   return (
     <div>

@@ -5,9 +5,14 @@ import {
   TextField,
   InputAdornment,
   Button,
+  Paper,
+  FormControl,
+  InputLabel,
+  Card,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { secondaryColor } from "@/styles/theme";
+import { useTheme } from "@mui/material/styles";
+import { primaryColor, secondaryColor } from "@/styles/theme";
 
 interface TableHeaderProps {
   onSearch: (query: string) => void;
@@ -20,8 +25,9 @@ export default function TableHeader({
   onFilterChange,
   onAddClick,
 }: TableHeaderProps) {
+  const theme = useTheme();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("10");
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -34,57 +40,55 @@ export default function TableHeader({
   };
 
   return (
-    <div
-      className="flex justify-between items-center"
-      style={{
-        borderTopLeftRadius: "10px",
-        borderTopRightRadius: "10px",
-      }}
-    >
-      {/* Left Side: Dropdown */}
-      <div className="flex space-x-4">
-        <Select
-          value={selectedFilter}
-          onChange={handleFilterChange}
-          displayEmpty
-          variant="outlined"
-          style={{ width: 150 }}
-        >
-          <MenuItem value="">Filter</MenuItem>
-          <MenuItem value="option1">Option 1</MenuItem>
-          <MenuItem value="option2">Option 2</MenuItem>
-        </Select>
-      </div>
-
-      {/* Center: Search Bar */}
-      <div className="flex grow justify-center">
-        <TextField
-          variant="outlined"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
+    <Card elevation={0} className="flex justify-between items-center p-4">
+      <div className="flex gap-4">
+        {/* Take Dropdown */}
+        <FormControl
+          sx={{
+            width: 80,
           }}
-          style={{ width: "300px" }}
-        />
+        >
+          <InputLabel id="demo-simple-select-label">Take</InputLabel>
+          <Select
+            value={selectedFilter}
+            onChange={handleFilterChange}
+            displayEmpty
+            label="Take"
+          >
+            <MenuItem value="10">10</MenuItem>
+            <MenuItem value="20">20</MenuItem>
+            <MenuItem value="30">30</MenuItem>
+          </Select>
+        </FormControl>
+
+        <div className="flex items-center gap-2">
+          {/* Search Bar */}
+          <TextField
+            sx={{
+              height: "100%",
+            }}
+            variant="outlined"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+          <Button sx={{ width: 100 }} onClick={onAddClick}>
+            Search
+          </Button>
+        </div>
       </div>
 
       {/* Right Side: Add Button */}
-      <div className="flex">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={onAddClick}
-          style={{ borderRadius: "20px" }}
-        >
-          Add
-        </Button>
-      </div>
-    </div>
+      <Button sx={{ width: 100 }} onClick={onAddClick}>
+        Add
+      </Button>
+    </Card>
   );
 }
