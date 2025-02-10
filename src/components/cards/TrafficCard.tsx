@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@mui/material";
+import { Card, CardContent, useTheme } from "@mui/material";
 
 interface TrafficCardProps {
   visitors: number;
@@ -9,8 +9,14 @@ export const TrafficCard: React.FC<TrafficCardProps> = ({
   visitors,
   percentage,
 }) => {
+  const theme = useTheme();
   return (
-    <Card sx={{ bgcolor: "white", boxShadow: "0 2px 4px rgba(0,0,0,0.05)" }}>
+    <Card
+      sx={{
+        bgcolor: theme.palette.background.paper,
+        boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+      }}
+    >
       <CardContent>
         <div className="flex justify-between items-center">
           <div>

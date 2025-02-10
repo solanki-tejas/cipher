@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent } from "@mui/material";
+import { Card, CardContent, useTheme } from "@mui/material";
 import dynamic from "next/dynamic";
 import { ApexOptions } from "apexcharts";
 import { borderRadius } from "@/styles/theme";
@@ -7,6 +7,7 @@ import { borderRadius } from "@/styles/theme";
 const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export const RevenueChart: React.FC = (data: any) => {
+  const theme = useTheme();
   const chartOptions: ApexOptions = {
     chart: {
       type: "line",
@@ -55,13 +56,18 @@ export const RevenueChart: React.FC = (data: any) => {
   return (
     <Card
       sx={{
-        bgcolor: "white",
+        bgcolor: theme.palette.background.paper,
         boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
       }}
     >
       <CardContent className="h-full flex flex-col justify-between">
         <div className="flex items-center gap-2 mb-4">
-          <div className="bg-gray-100 px-3 py-1 rounded-full text-sm">
+          <div
+            className=" px-3 py-1 rounded-full text-sm"
+            style={{
+              background: theme.palette.background.default,
+            }}
+          >
             This month
           </div>
         </div>

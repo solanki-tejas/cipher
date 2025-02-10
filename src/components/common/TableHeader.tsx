@@ -1,18 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import {
   Select,
   MenuItem,
   TextField,
   InputAdornment,
   Button,
-  Paper,
   FormControl,
   InputLabel,
   Card,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useTheme } from "@mui/material/styles";
-import { primaryColor, secondaryColor } from "@/styles/theme";
 
 interface TableHeaderProps {
   onSearch: (query: string) => void;
@@ -25,9 +23,18 @@ export default function TableHeader({
   onFilterChange,
   onAddClick,
 }: TableHeaderProps) {
-  const theme = useTheme();
+  const router = useRouter();
+  const { query } = router;
+
+  // Get 'take' from URL, default to '10' if not present
+  const [selectedFilter, setSelectedFilter] = useState(query.take || "10");
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState("10");
+
+  useEffect(() => {
+    if (query.take) {
+      setSelectedFilter(query.take as string);
+    }
+  }, [query.take]);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -35,24 +42,30 @@ export default function TableHeader({
   };
 
   const handleFilterChange = (event: any) => {
-    setSelectedFilter(event.target.value as string);
-    onFilterChange(event.target.value as string);
+    const newTake = event.target.value as string;
+    setSelectedFilter(newTake);
+    onFilterChange(newTake);
+
+    // Update URL without reloading the page
+    router.push(
+      {
+        pathname: router.pathname,
+        query: { ...query, page: 1, take: newTake },
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   return (
     <Card elevation={0} className="flex justify-between items-center p-4">
       <div className="flex gap-4">
         {/* Take Dropdown */}
-        <FormControl
-          sx={{
-            width: 80,
-          }}
-        >
-          <InputLabel id="demo-simple-select-label">Take</InputLabel>
+        <FormControl sx={{ width: 80 }}>
+          <InputLabel>Take</InputLabel>
           <Select
             value={selectedFilter}
             onChange={handleFilterChange}
-            displayEmpty
             label="Take"
           >
             <MenuItem value="10">10</MenuItem>
@@ -64,9 +77,7 @@ export default function TableHeader({
         <div className="flex items-center gap-2">
           {/* Search Bar */}
           <TextField
-            sx={{
-              height: "100%",
-            }}
+            sx={{ height: "100%" }}
             variant="outlined"
             placeholder="Search"
             value={searchQuery}
@@ -79,9 +90,7 @@ export default function TableHeader({
               ),
             }}
           />
-          <Button sx={{ width: 100 }} onClick={onAddClick}>
-            Search
-          </Button>
+          <Button sx={{ width: 100 }}>Search</Button>
         </div>
       </div>
 

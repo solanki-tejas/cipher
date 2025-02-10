@@ -11,7 +11,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
 import { borderRadius, boxShadow } from "@/styles/theme";
 import { useState } from "react";
-
+import { useThemeContext } from "@/contexts/ThemeProvider";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 interface HeaderProps {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -28,6 +30,7 @@ export default function Header({ open, setOpen }: HeaderProps) {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+  const { toggleTheme, darkMode } = useThemeContext();
 
   return (
     <div className="fixed w-full z-10 px-6 pt-4">
@@ -72,7 +75,10 @@ export default function Header({ open, setOpen }: HeaderProps) {
               Cipher
             </Typography>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center gap-x-3">
+            <IconButton onClick={toggleTheme}>
+              {!darkMode ? <DarkModeIcon /> : <LightModeIcon />}
+            </IconButton>
             <IconButton onClick={handleMenuOpen} sx={{ padding: 0 }}>
               <Avatar sx={{ backgroundColor: theme.palette.primary.main }}>
                 {/* Profile initial or icon */}

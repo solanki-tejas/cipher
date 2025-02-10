@@ -1,19 +1,20 @@
 import { createTheme } from "@mui/material/styles";
 
+// 🌞 Common Theme Variables
 export const primaryColor = "#242331";
 export const secondaryColor = "#2f0e07";
 export const borderRadius = "10px";
 export const fontFamily = "Poppins, sans-serif";
-export const backgroundColor = "#f4f7fe";
-export const textColor = "#444444";
 export const boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px";
 
-const theme = createTheme({
+// 🌞 Light Theme
+export const lightTheme = createTheme({
   palette: {
+    mode: "light",
     primary: { main: primaryColor },
     secondary: { main: secondaryColor },
-    background: { default: backgroundColor },
-    text: { primary: textColor },
+    background: { default: "#f4f7fe", paper: "#ffffff" },
+    text: { primary: "#444444", secondary: "#666666" },
   },
   typography: {
     fontFamily,
@@ -56,65 +57,31 @@ const theme = createTheme({
     button: { fontSize: "0.875rem", textTransform: "none" },
   },
   components: {
-    MuiCard: {
-      styleOverrides: {
-        root: { borderRadius, boxShadow },
-      },
-    },
+    MuiCard: { styleOverrides: { root: { borderRadius, boxShadow } } },
     MuiButton: {
       defaultProps: { size: "small", variant: "contained" },
       styleOverrides: {
         root: { borderRadius, textTransform: "none", padding: "8px 16px" },
       },
     },
-    MuiFormControl: {
-      styleOverrides: {
-        root: { width: "100%" },
-      },
-    },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: { borderRadius },
-      },
-    },
+    MuiFormControl: { styleOverrides: { root: { width: "100%" } } },
+    MuiOutlinedInput: { styleOverrides: { root: { borderRadius } } },
     MuiTextField: {
       defaultProps: { size: "small" },
-      styleOverrides: {
-        root: { borderRadius },
-      },
+      styleOverrides: { root: { borderRadius } },
     },
     MuiSelect: {
       defaultProps: { size: "small" },
-      styleOverrides: {
-        root: { borderRadius },
-      },
+      styleOverrides: { root: { borderRadius } },
     },
-    MuiInputBase: {
-      styleOverrides: {
-        root: { borderRadius },
-      },
-    },
+    MuiInputBase: { styleOverrides: { root: { borderRadius } } },
     MuiCheckbox: {
       defaultProps: { size: "small" },
-      styleOverrides: {
-        root: { padding: 0, borderRadius },
-      },
+      styleOverrides: { root: { padding: 0, borderRadius } },
     },
-    MuiRadio: {
-      styleOverrides: {
-        root: { borderRadius },
-      },
-    },
-    MuiFormControlLabel: {
-      styleOverrides: {
-        root: { marginBottom: "8px" },
-      },
-    },
-    MuiListItemIcon: {
-      styleOverrides: {
-        root: { minWidth: "32px" },
-      },
-    },
+    MuiRadio: { styleOverrides: { root: { borderRadius } } },
+    MuiFormControlLabel: { styleOverrides: { root: { marginBottom: "8px" } } },
+    MuiListItemIcon: { styleOverrides: { root: { minWidth: "32px" } } },
     MuiListItemButton: {
       styleOverrides: {
         root: {
@@ -130,24 +97,13 @@ const theme = createTheme({
       },
     },
     MuiTableHead: {
-      styleOverrides: {
-        root: { backgroundColor: primaryColor },
-      },
+      styleOverrides: { root: { backgroundColor: primaryColor } },
     },
-    MuiTableCell: {
-      styleOverrides: {
-        root: { padding: "10px" },
-      },
-    },
+    MuiTableCell: { styleOverrides: { root: { padding: "10px" } } },
     MuiDrawer: {
-      defaultProps: {
-        anchor: "right",
-      },
-      styleOverrides: {
-        paper: { width: "50vw", padding: "20px" },
-      },
+      defaultProps: { anchor: "right" },
+      styleOverrides: { paper: { width: "50vw", padding: "20px" } },
     },
   },
 });
 
-export default theme;

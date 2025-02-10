@@ -95,6 +95,7 @@ export default function Sidebar({ open, setOpen }: SidebarProps) {
   return (
     <div>
       <Drawer
+        anchor="left"
         variant="permanent"
         open={open}
         sx={{
@@ -102,6 +103,7 @@ export default function Sidebar({ open, setOpen }: SidebarProps) {
           flexShrink: 0,
           transition: "width 0.3s",
           [`& .MuiDrawer-paper`]: {
+            padding: 0,
             width: open ? drawerWidth : 0,
             transition: "width 0.3s",
             overflowX: "hidden",

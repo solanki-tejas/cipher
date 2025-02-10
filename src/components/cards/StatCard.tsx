@@ -16,7 +16,7 @@ export const StatCard: React.FC<StatCardProps> = ({ icon, title, value }) => {
     <Card
       sx={{
         // Glassy frosted effect without box shadow
-        background: "white", // Light transparent background
+        background: theme.palette.background.paper, // Light transparent background
         borderRadius: borderRadius, // Rounded corners
         overflow: "hidden", // Ensure content doesn't spill out of card
       }}
