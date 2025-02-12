@@ -1,8 +1,20 @@
 import React from "react";
-import { Typography, Drawer, Box, TextField, Button } from "@mui/material";
+import {
+  Typography,
+  Drawer,
+  Box,
+  TextField,
+  Button,
+  useTheme,
+} from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Customer, DrawerMode } from "@/types/customer";
+import {
+  borderRadius,
+  primaryColor,
+  secondaryColor,
+} from "@/styles/light-theme";
 
 interface CustomerDrawerProps {
   open: boolean;
@@ -39,8 +51,20 @@ const FormDrawer: React.FC<CustomerDrawerProps> = ({
     },
   });
 
+  const theme = useTheme();
+
   return (
-    <Drawer open={open} onClose={onClose}>
+    <Drawer
+      open={open}
+      onClose={onClose}
+      sx={{
+        "& .MuiDrawer-paper": {
+          borderTopLeftRadius: borderRadius,
+          borderBottomLeftRadius: borderRadius,
+          border: "2px solid lightgrey",
+        },
+      }}
+    >
       <div className="h-full flex flex-col gap-y-6">
         <Typography variant="h5" fontWeight={600}>
           {mode} Customer

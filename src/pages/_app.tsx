@@ -6,6 +6,7 @@ import { AppProps } from "next/app";
 // import theme from "@/styles/theme";
 import Layout from "@/components/layouts/Layout";
 import { ThemeProviderWrapper } from "@/contexts/ThemeProvider";
+import { useRouter } from "next/router";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,14 +18,23 @@ const queryClient = new QueryClient({
 // const darkTheme = createTheme({ palette: { mode: "light" } });
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const isAuth = router.pathname.includes("auth");
   return (
     <QueryClientProvider client={queryClient}>
       {/* <ThemeProvider theme={theme}> */}
       <ThemeProviderWrapper>
-        <Layout>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </Layout>
+        {isAuth ? (
+          <>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </>
+        ) : (
+          <Layout>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </Layout>
+        )}
       </ThemeProviderWrapper>
       {/* </ThemeProvider> */}
     </QueryClientProvider>

@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useThemeContext } from "@/contexts/ThemeProvider";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import { useRouter } from "next/router";
 interface HeaderProps {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -21,6 +22,7 @@ interface HeaderProps {
 
 export default function Header({ open, setOpen }: HeaderProps) {
   const theme = useTheme();
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -30,7 +32,10 @@ export default function Header({ open, setOpen }: HeaderProps) {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+
   const { toggleTheme, darkMode } = useThemeContext();
+
+  const handleLogout = () => router.push("/auth/login");
 
   return (
     <div className="fixed w-full z-10 px-6 pt-4">
@@ -76,9 +81,9 @@ export default function Header({ open, setOpen }: HeaderProps) {
             </Typography>
           </div>
           <div className="flex items-center gap-x-3">
-            <IconButton onClick={toggleTheme}>
+            {/* <IconButton onClick={toggleTheme}>
               {!darkMode ? <DarkModeIcon /> : <LightModeIcon />}
-            </IconButton>
+            </IconButton> */}
             <IconButton onClick={handleMenuOpen} sx={{ padding: 0 }}>
               <Avatar sx={{ backgroundColor: theme.palette.primary.main }}>
                 {/* Profile initial or icon */}
@@ -105,7 +110,7 @@ export default function Header({ open, setOpen }: HeaderProps) {
             >
               <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
               <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-              <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>
         </Toolbar>

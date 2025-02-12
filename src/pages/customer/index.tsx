@@ -137,7 +137,7 @@ const CustomerPage = () => {
         onClose={handleDrawerClose}
         onSubmit={handleCustomerSubmit}
       />
-    </div>
+    </div>  
   );
 };
 
